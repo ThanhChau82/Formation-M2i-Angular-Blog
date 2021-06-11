@@ -7,7 +7,7 @@ import { ListComponent } from './list/list.component';
 const routes: Routes = [
   {path : 'list', component : ListComponent},
   {path : 'insert', component : InsertComponent},
-  {path : 'edit', component : EditComponent}, // à ajouter un paramètre plus tard pour id du post
+  {path : 'edit/:id', component : EditComponent}, // à ajouter un paramètre plus tard pour id du post
   {path : '', redirectTo : 'list', pathMatch : 'full'}
 ];
 

@@ -33,5 +33,6 @@ export class PostService {
 
   deletePost(id : number) : void {
     this.posts = this.posts.filter(p => p.id == id);
+    console.log(this.posts);
   }
 }
