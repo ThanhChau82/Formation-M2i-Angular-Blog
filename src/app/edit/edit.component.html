@@ -1,9 +1,9 @@
 <div class="container">
-  <h1>Modification du post</h1>
+  <h1>Modification du post <span [ngStyle]="{color: 'red'}">#{{post.id}}</span></h1>
   <form (ngSubmit)="editPost(f)" #f="ngForm">
     <div class="mb-3">
       <label for="id" class="form-label">Id</label>
-      <input type="number" class="form-control" id="id" required readonly ngModel name="id" [ngModel]="post.id">
+      <input type="number" class="form-control" id="id" required readonly ngModel name="id" [ngModel]="post.id"><!--ngModel : demande à Angular de créer le FormsControl pour ce champ; [ngModel]="post.id" : lier la valeur de ce champ à la propriété id de l'objet post-->
     </div>
     <div class="mb-3">
       <label for="userId" class="form-label">Référence d'utilisateur</label>
@@ -17,6 +17,6 @@
       <label for="body" class="form-label">Contenu</label>
       <input type="text" class="form-control" id="body" ngModel name="body" [ngModel]="post.body">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Modifier</button>
   </form>
 </div>
