@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Post } from '../models/post';
 
 @Injectable({
@@ -7,32 +9,43 @@ import { Post } from '../models/post';
 export class PostService {
   posts : Post[];
 
-  constructor() {
-    this.posts = [
-      new Post(1, 1, "test title 1", "test body 1"),
-      new Post(1, 2, "test title 2", "test body 2"),
-    ];
+  constructor(private http : HttpClient) {
+    this.posts = [];
+   }
+
+  getPosts() : Observable<Post[]> {
+    return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts'); // Lancer la requête vers le server.
   }
 
-  getPosts() : Post[] {
-    return [...this.posts]; // Retourner une copie de valeur de tableau de posts.
-  }
-
-  getPostById(id : number) : Post {
-    return <Post>{...this.posts.find(p => p.id == id)}; // Retourner une copie de valeur de post.
+  getPostById(id : number) : Observable<Post> {
+    return this.http.get<Post>('https://jsonplaceholder.typicode.com/posts/' + id);
   }
 
   addPost(post : Post) : void {
-    this.posts.push(post);
+    this.http.post('https://jsonplaceholder.typicode.com/posts', post).subscribe(
+      data => {
+        console.log(data);
+      }
+    );
   }
 
   editPost(post : Post) : void {
-    let indice = this.posts.findIndex(p => p.id == post.id);
-    this.posts[indice] = post;
+    this.http.put('https://jsonplaceholder.typicode.com/posts/' + post.id, post).subscribe(
+      data => {
+        console.log(data);
+      }
+    );
+    //let indice = this.posts.findIndex(p => p.id == post.id);
+    //this.posts[indice] = post;
   }
 
   deletePost(id : number) : void {
-    this.posts = this.posts.filter(p => p.id == id);
-    console.log(this.posts);
+    this.http.delete('https://jsonplaceholder.typicode.com/posts/' + id).subscribe(
+      data => {
+        console.log(data);
+      }
+    )
+    //this.posts = this.posts.filter(p => p.id == id);
+    //console.log(this.posts);
   }
 }

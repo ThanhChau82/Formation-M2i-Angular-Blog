@@ -20,7 +20,11 @@ export class EditComponent implements OnInit {
     this.route.params.subscribe( // inscire aux observables pour intercepter le flux de paramètres
       parametres => {
         // Récupérer le post à modifier.
-        this.post = this.postService.getPostById(parametres['id']);
+        this.postService.getPostById(parametres['id']).subscribe(
+          data => {
+            this.post = data;
+          }
+        );
       }
     );
   }
