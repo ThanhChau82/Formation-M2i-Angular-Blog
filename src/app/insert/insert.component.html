@@ -1,1 +1,22 @@
-<p>insert works!</p>
+<div class="container">
+  <h1>Ajout d'un nouveau post</h1>
+  <form (ngSubmit)="addPost(f)" #f="ngForm">
+    <div class="mb-3">
+      <label for="id" class="form-label">Id</label>
+      <input type="number" class="form-control" id="id" required ngModel name="id">
+    </div>
+    <div class="mb-3">
+      <label for="userId" class="form-label">Référence d'utilisateur</label>
+      <input type="number" class="form-control" id="userId" required ngModel name="userId">
+    </div>
+    <div class="mb-3">
+      <label for="title" class="form-label">Titre</label>
+      <input type="text" class="form-control" id="title" required ngModel name="title">
+    </div>
+    <div class="mb-3">
+      <label for="body" class="form-label">Contenu</label>
+      <input type="text" class="form-control" id="body" ngModel name="body">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Post } from '../models/post';
+import { PostService } from '../services/post.service';
 
 @Component({
   selector: 'app-insert',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InsertComponent implements OnInit {
 
-  constructor() { }
+  constructor(private postService : PostService) { }
 
   ngOnInit(): void {
+  }
+
+  addPost(f : NgForm) : void {
+    let post = new Post(f.value.userId, f.value.id, f.value.title, f.value.body);
+    this.postService.addPost(post);
+    console.log(this.postService.getPosts());
   }
 
 }
