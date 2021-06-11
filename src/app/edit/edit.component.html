@@ -1,1 +1,22 @@
-<p>edit works!</p>
+<div class="container">
+  <h1>Modification du post</h1>
+  <form (ngSubmit)="editPost(f)" #f="ngForm">
+    <div class="mb-3">
+      <label for="id" class="form-label">Id</label>
+      <input type="number" class="form-control" id="id" required readonly ngModel name="id" [ngModel]="post.id">
+    </div>
+    <div class="mb-3">
+      <label for="userId" class="form-label">Référence d'utilisateur</label>
+      <input type="number" class="form-control" id="userId" required ngModel name="userId" [ngModel]="post.userId">
+    </div>
+    <div class="mb-3">
+      <label for="title" class="form-label">Titre</label>
+      <input type="text" class="form-control" id="title" required ngModel name="title" [ngModel]="post.title">
+    </div>
+    <div class="mb-3">
+      <label for="body" class="form-label">Contenu</label>
+      <input type="text" class="form-control" id="body" ngModel name="body" [ngModel]="post.body">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
