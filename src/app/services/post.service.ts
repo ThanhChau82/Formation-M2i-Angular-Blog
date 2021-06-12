@@ -45,7 +45,7 @@ export class PostService {
         console.log(data);
       }
     )
-    //this.posts = this.posts.filter(p => p.id == id);
+    //this.posts = this.posts.filter(p => p.id != id);
     //console.log(this.posts);
   }
 }
